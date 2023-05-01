@@ -12,7 +12,7 @@ app = Client(name=SESSION_NAME, api_id=API_ID, api_hash=API_HASH)
 async def finder(client, message):
     if SEARCH_MESSAGES_QUERY in message.text:
         for word in REQUIRED_WORDS:
-            if word in message.text:
+            if word in message.text.lower():
                 if not finder.find_in_db(message.id):
 
                     res = await message.forward(FORWARD_CHAT_ID)

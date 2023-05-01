@@ -21,7 +21,7 @@ class Finder:
             async for message in self.app.search_messages(TARGET_CHAT_ID, query=SEARCH_MESSAGES_QUERY,
                                                           limit=SEARCH_MESSAGES_LIMIT):
                 for word in REQUIRED_WORDS:
-                    if word in message.text:
+                    if word in message.text.lower():
                         if not self.find_in_db(message.id):
                             if message not in messages:
                                 messages.append(message)
